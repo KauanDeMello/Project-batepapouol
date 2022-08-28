@@ -15,6 +15,10 @@ body{
     align-items: center;
     justify-content: space-between;
     margin-bottom: 26px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: auto;
     
 }
 
@@ -32,9 +36,56 @@ body{
 
 .container{
     width: 375px;
-    height: 600px
+    height: auto;
+    overflow: hidden;
 }
 
+.statusM{
+    width: 100%;
+    height: 40px;
+    background-color: #dcdcdd;
+    display: flex;
+    align-items: center;
+}
+
+.publicM{
+    width: 100%;
+    height: 40px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.privateM{
+    width: 100%;
+    height: 40px;
+    background-color: #FFDEDE;
+    display: flex;
+    align-items: center;
+}
+
+.time{
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.name{
+    font-size: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-weight: 700;
+}
+
+.receiver{
+    font-size: 14px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.text{
+    font-size: 14px;
+    margin-right: 5px;
+}
 
 .bottom{
     width: 375px;
@@ -44,6 +95,10 @@ body{
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
 }
 
 .v_send{

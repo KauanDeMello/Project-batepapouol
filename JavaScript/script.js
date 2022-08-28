@@ -1,4 +1,6 @@
 let nomeUsuario;
+const todos = "todos";
+const type = "message";
 
 
 
@@ -13,7 +15,7 @@ function recebernome(){
 
 
     promessa.catch(erro);
-
+    
 };
 
 recebernome();
@@ -26,13 +28,22 @@ function erro(){
 
 //function para manter o servidor
 
-setInterval(manterConexao,5000);
 
-function manterConexao(){
-    axios.post('https://mock-api.driven.com.br/api/v6/uol/status', nomeUsuario);
+
+
+const manterConexao = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', 
+{
+    name: nomeUsuario
+});
+
+manterConexao.then(setInterval(manterConexao2, 5000)); 
+
+function manterConexao2(respos){
+    const manterConexao = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', 
+{
+    name: nomeUsuario
+});
 }
-
-
 
 // receber mensagens
 
@@ -71,7 +82,7 @@ function renderM(resposta) {
             </div>`
         }
 
-        if(mensagens[i].type === "private_message" && mensagens[i].to === nameUsuario){
+        if(mensagens[i].type === "private_message" && mensagens[i].to === nomeUsuario){
             container.innerHTML += `
             <div class="privateM">
                     <div class="time">(${mensagens[i].time})</div>
@@ -89,3 +100,27 @@ function renderM(resposta) {
 }
 
 // enviar mensagem 
+
+function enviarMensagem(){
+
+    const messenger_text = document.querySelector('.messenger_text').value;
+    const clean = document.querySelector('.messenger_text');
+
+    const quartaPromessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages',
+    {
+        from: nomeUsuario,
+        to: todos,
+        text: messenger_text,
+        type: type, 
+    }
+    )
+    
+
+    quartaPromessa.catch(ausen)
+
+    clean.value = ''
+}
+
+function ausen(){
+    alert.location.reload();
+}
