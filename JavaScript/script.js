@@ -1,7 +1,7 @@
 // vars globais:
 let nomeUsuario = "";
 
-// pegarUsername
+// funcao para pegarUsername
 function pegarUsuario(){
     nomeUsuario = prompt('Qual o usuário?');
 
@@ -13,26 +13,7 @@ let req = pegarUsuario();
 
 
 
-// pegar dados do servidor as mensagens
-/* function PegarDados(){
-    const promessa = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
-    promessa.then(renderizarDados) // sucesso
-    promessa.cacth(mostrarErro) //erro
-}   
-
-function renderizarDados(resposta){
-
-    const mensagens = document.querySelector(".m_in_out")
-
-}/*
-
-/*function mostrarErro(){
-    alert.apply('erro')// vou usar if aqui para  os erros duas
-    console.log()
-}*/
-
-
-// enviar ao servidor
+// enviar ao servidor o usuario
 
 const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', req);
 console.log(promessa);
@@ -44,10 +25,22 @@ promessa.catch(callbackError);
 function callback(resposta){
 
     if(
-        resposta.status == 400
-    ){console.log('User já existe, tente novamente!')}
+        resposta.status == 200
+    ){('Bem vindo!')}
 }
 
 function callbackError(erro){
-    console.log(erro, 'User já existe, tente novamente!');
+    alert('User já existente!');
 }
+
+// function para manter o servidor
+
+setInterval(manterConexao,5000);
+
+function manterConexao(){
+    axios.post('https://mock-api.driven.com.br/api/v6/uol/status', req);
+    console.log('teste')
+}
+
+
+// pegar mensagens
